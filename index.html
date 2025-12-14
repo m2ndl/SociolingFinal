@@ -43,6 +43,18 @@
         .sidebar { background: #263238; color: #fff; padding: 1rem; width: 100%; position: sticky; top: 0; z-index: 1000; }
         @media(min-width: 768px) { .sidebar { width: 250px; height: 100vh; overflow-y: auto; flex-shrink: 0; } }
         
+        /* Mobile Menu Toggle */
+        .nav-header { display: flex; justify-content: space-between; align-items: center; }
+        .menu-toggle { display: none; background: transparent; border: 1px solid #546e7a; color: #fff; padding: 5px 10px; border-radius: 4px; cursor: pointer; font-size: 1.2rem; }
+        .nav-content { display: block; }
+
+        @media(max-width: 767px) {
+            .menu-toggle { display: block; }
+            .nav-content { display: none; margin-top: 1rem; }
+            .nav-content.show { display: block; }
+            .nav-title { margin-bottom: 0; border-bottom: none; }
+        }
+
         .nav-title { font-size: 1.2rem; font-weight: bold; margin-bottom: 1rem; color: #eceff1; border-bottom: 1px solid #546e7a; padding-bottom: 0.5rem; }
         .nav-list { list-style: none; padding: 0; }
         .nav-item { margin-bottom: 0.5rem; }
@@ -135,23 +147,32 @@
 <div class="container">
     <!-- Sidebar -->
     <nav class="sidebar">
-        <div class="nav-title">Sociolinguistics Guide</div>
-        <ul class="nav-list">
-            <li class="nav-item"><a href="#" class="nav-link active" data-target="intro">Introduction</a></li>
-            <li class="nav-item"><a href="#" class="nav-link" data-target="topic1">1. Defining Groups</a></li>
-            <li class="nav-item"><a href="#" class="nav-link" data-target="topic2">2. Variationist Studies</a></li>
-            <li class="nav-item"><a href="#" class="nav-link" data-target="topic3">3. Diglossia</a></li>
-            <li class="nav-item"><a href="#" class="nav-link" data-target="topic4">4. Pidgins & Creoles</a></li>
-            <li class="nav-item"><a href="#" class="nav-link" data-target="active-recall">Essay Workbook</a></li>
-            <li class="nav-item"><a href="#" class="nav-link" data-target="glossary">Glossary</a></li>
-        </ul>
-        
-        <div class="progress-bar-container">
-            <div class="progress-bar" id="progressBar"></div>
+        <div class="nav-header">
+            <div class="nav-title">Sociolinguistics Guide</div>
+            <button class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle Menu">
+                ☰
+            </button>
         </div>
-        <div class="progress-text" id="progressText">0% Complete</div>
-        <div style="margin-top: 2rem; text-align: center;">
-            <button class="btn" style="font-size: 0.8rem; background: #b71c1c;" onclick="resetProgress()">Reset Progress</button>
+        
+        <!-- Collapsible Content for Mobile -->
+        <div class="nav-content" id="navContent">
+            <ul class="nav-list">
+                <li class="nav-item"><a href="#" class="nav-link active" data-target="intro">Introduction</a></li>
+                <li class="nav-item"><a href="#" class="nav-link" data-target="topic1">1. Defining Groups</a></li>
+                <li class="nav-item"><a href="#" class="nav-link" data-target="topic2">2. Variationist Studies</a></li>
+                <li class="nav-item"><a href="#" class="nav-link" data-target="topic3">3. Diglossia</a></li>
+                <li class="nav-item"><a href="#" class="nav-link" data-target="topic4">4. Pidgins & Creoles</a></li>
+                <li class="nav-item"><a href="#" class="nav-link" data-target="active-recall">Essay Workbook</a></li>
+                <li class="nav-item"><a href="#" class="nav-link" data-target="glossary">Glossary</a></li>
+            </ul>
+            
+            <div class="progress-bar-container">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+            <div class="progress-text" id="progressText">0% Complete</div>
+            <div style="margin-top: 2rem; text-align: center;">
+                <button class="btn" style="font-size: 0.8rem; background: #b71c1c;" onclick="resetProgress()">Reset Progress</button>
+            </div>
         </div>
     </nav>
 
@@ -579,10 +600,23 @@
         window.scrollTo(0,0);
     }
 
+    // Toggle menu logic for mobile
+    function toggleMenu() {
+        const nav = document.getElementById('navContent');
+        if (nav.classList.contains('show')) {
+            nav.classList.remove('show');
+        } else {
+            nav.classList.add('show');
+        }
+    }
+
+    // Auto-close menu when link clicked (Mobile UX)
     document.querySelectorAll('.nav-link').forEach(link => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
             switchSection(link.getAttribute('data-target'));
+            // Close menu if open
+            document.getElementById('navContent').classList.remove('show');
         });
     });
 
