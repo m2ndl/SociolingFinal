@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sociolinguistics Final Exam Study Guide</title>
+    <style>
+        :root {
+            --bg-body: #f4f4f9;
+            --text-main: #333;
+            --text-light: #555;
+            --shadow: 0 4px 6px rgba(0,0,0,0.1);
+            
+            /* Topic 1 Theme: Groups (Teal/Blue) */
+            --t1-primary: #006064;
+            --t1-secondary: #e0f7fa;
+            --t1-accent: #00bcd4;
+
+            /* Topic 2 Theme: Variation (Forest/Green) */
+            --t2-primary: #1b5e20;
+            --t2-secondary: #e8f5e9;
+            --t2-accent: #4caf50;
+
+            /* Topic 3 Theme: Diglossia (Indigo/Purple) */
+            --t3-primary: #311b92;
+            --t3-secondary: #ede7f6;
+            --t3-accent: #673ab7;
+
+            /* Topic 4 Theme: Contact (Burnt Orange) */
+            --t4-primary: #bf360c;
+            --t4-secondary: #fbe9e7;
+            --t4-accent: #ff5722;
+        }
+
+        * { box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.7; color: var(--text-main); background: var(--bg-body); margin: 0; }
+        
+        /* Layout */
+        .container { display: flex; min-height: 100vh; flex-direction: column; }
+        @media(min-width: 768px) { .container { flex-direction: row; } }
+
+        /* Sidebar Navigation */
+        .sidebar { background: #263238; color: #fff; padding: 1rem; width: 100%; position: sticky; top: 0; z-index: 1000; }
+        @media(min-width: 768px) { .sidebar { width: 250px; height: 100vh; overflow-y: auto; flex-shrink: 0; } }
+        
+        .nav-title { font-size: 1.2rem; font-weight: bold; margin-bottom: 1rem; color: #eceff1; border-bottom: 1px solid #546e7a; padding-bottom: 0.5rem; }
+        .nav-list { list-style: none; padding: 0; }
+        .nav-item { margin-bottom: 0.5rem; }
+        .nav-link { color: #b0bec5; text-decoration: none; display: block; padding: 0.5rem; border-radius: 4px; transition: all 0.3s; }
+        .nav-link:hover, .nav-link.active { background: #37474f; color: #fff; transform: translateX(5px); }
+        .progress-bar-container { background: #37474f; height: 10px; border-radius: 5px; margin-top: 2rem; }
+        .progress-bar { height: 100%; background: #00bcd4; width: 0%; border-radius: 5px; transition: width 0.5s; }
+        .progress-text { font-size: 0.8rem; color: #b0bec5; margin-top: 0.25rem; text-align: center; }
+
+        /* Main Content */
+        .main-content { flex: 1; padding: 1rem; max-width: 1000px; margin: 0 auto; width: 100%; }
+        @media(min-width: 768px) { .main-content { padding: 3rem; } }
+
+        section { display: none; animation: fadeIn 0.5s; }
+        section.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        h1 { border-bottom: 4px solid; padding-bottom: 0.5rem; margin-bottom: 2rem; font-size: 2.2rem; }
+        h2 { margin-top: 3rem; font-size: 1.8rem; border-left: 6px solid; padding-left: 15px; }
+        h3 { font-size: 1.3rem; margin-top: 2rem; color: #222; font-weight: 700; }
+        p { margin-bottom: 1.2rem; }
+
+        /* Topic Specific Styling */
+        #topic1 h1, #topic1 h2 { border-color: var(--t1-accent); color: var(--t1-primary); }
+        #topic1 .highlight-box { background: var(--t1-secondary); border-left: 4px solid var(--t1-primary); }
+        #topic1 .essay-block { border: 2px solid var(--t1-primary); background: #fff; }
+        
+        #topic2 h1, #topic2 h2 { border-color: var(--t2-accent); color: var(--t2-primary); }
+        #topic2 .highlight-box { background: var(--t2-secondary); border-left: 4px solid var(--t2-primary); }
+        #topic2 .essay-block { border: 2px solid var(--t2-primary); background: #fff; }
+
+        #topic3 h1, #topic3 h2 { border-color: var(--t3-accent); color: var(--t3-primary); }
+        #topic3 .highlight-box { background: var(--t3-secondary); border-left: 4px solid var(--t3-primary); }
+        #topic3 .essay-block { border: 2px solid var(--t3-primary); background: #fff; }
+
+        #topic4 h1, #topic4 h2 { border-color: var(--t4-accent); color: var(--t4-primary); }
+        #topic4 .highlight-box { background: var(--t4-secondary); border-left: 4px solid var(--t4-primary); }
+        #topic4 .essay-block { border: 2px solid var(--t4-primary); background: #fff; }
+
+        /* Content Components */
+        .highlight-box { padding: 1.5rem; margin: 1.5rem 0; border-radius: 0 4px 4px 0; font-size: 1.05rem; }
+        .citation { font-size: 0.8em; color: #666; font-style: italic; background: #eee; padding: 2px 5px; border-radius: 4px; display: inline-block; vertical-align: middle; }
+        
+        /* Essay Block */
+        .essay-block { padding: 2rem; margin-top: 3rem; border-radius: 8px; box-shadow: var(--shadow); }
+        .essay-title { font-weight: bold; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1rem; color: #444; border-bottom: 1px solid #ccc; padding-bottom: 0.5rem; }
+
+        /* Interactive Elements */
+        details { background: #fff; border: 1px solid #ddd; border-radius: 4px; margin-bottom: 1rem; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+        summary { padding: 1.2rem; cursor: pointer; font-weight: bold; font-size: 1.1rem; background: #fafafa; outline: none; list-style: none; transition: background 0.2s; }
+        summary:hover { background: #f0f0f0; }
+        summary::-webkit-details-marker { display: none; }
+        summary::after { content: '+'; float: right; font-weight: bold; font-size: 1.2rem; }
+        details[open] summary::after { content: '-'; }
+        .details-content { padding: 1.5rem; border-top: 1px solid #ddd; color: var(--text-light); }
+
+        /* Tools: Glossary */
+        .glossary-search { width: 100%; padding: 1rem; border: 2px solid #ddd; border-radius: 4px; margin-bottom: 1rem; font-size: 1.1rem; }
+        .glossary-item { background: #fff; padding: 1.5rem; margin-bottom: 0.5rem; border-radius: 4px; border-left: 5px solid #607d8b; display: none; box-shadow: var(--shadow); }
+        .glossary-item.visible { display: block; }
+
+        .btn { padding: 0.8rem 1.5rem; border: none; border-radius: 4px; cursor: pointer; background: #607d8b; color: white; font-weight: bold; margin: 0 0.5rem; transition: background 0.3s; font-size: 1rem; }
+        .btn:hover { background: #455a64; }
+
+        /* Tools: Quiz */
+        .quiz-question { background: #fff; padding: 2rem; border-radius: 8px; box-shadow: var(--shadow); margin-bottom: 2rem; }
+        .quiz-options { list-style: none; padding: 0; margin-top: 1rem; }
+        .quiz-option { padding: 1rem; border: 1px solid #ddd; margin-bottom: 0.5rem; border-radius: 4px; cursor: pointer; transition: all 0.2s; }
+        .quiz-option:hover { background: #f0f0f0; border-color: #bbb; }
+        .quiz-option.correct { background: #c8e6c9; border-color: #4caf50; color: #1b5e20; }
+        .quiz-option.incorrect { background: #ffcdd2; border-color: #f44336; color: #b71c1c; }
+        .feedback { margin-top: 1.5rem; padding: 1rem; border-radius: 4px; display: none; background: #fafafa; border-left: 4px solid #333; }
+        
+        /* Tools: Active Recall (Essay Mode) */
+        .recall-card { background: #fff; padding: 2rem; border-radius: 8px; box-shadow: var(--shadow); margin-bottom: 2rem; border-left: 6px solid #546e7a; }
+        .recall-prompt { font-size: 1.2rem; font-weight: bold; margin-bottom: 1rem; color: #263238; }
+        .recall-textarea { width: 100%; height: 200px; padding: 1rem; border: 2px solid #ddd; border-radius: 4px; font-family: inherit; font-size: 1rem; resize: vertical; background: #fafafa; margin-bottom: 1rem; }
+        .recall-textarea:focus { outline: none; border-color: #00bcd4; background: #fff; }
+        .recall-answer { font-size: 1rem; color: #1b5e20; margin-top: 1rem; display: none; background: #e8f5e9; padding: 1.5rem; border-radius: 4px; border: 1px solid #c8e6c9; }
+        .recall-toggle { font-size: 0.9rem; text-decoration: none; cursor: pointer; color: #fff; background: #546e7a; padding: 0.5rem 1rem; border-radius: 4px; display: inline-block; }
+        .recall-toggle:hover { background: #455a64; }
+
+        /* Navigation Buttons */
+        .nav-buttons { display: flex; justify-content: space-between; margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #ddd; }
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Sidebar -->
+    <nav class="sidebar">
+        <div class="nav-title">Sociolinguistics Guide</div>
+        <ul class="nav-list">
+            <li class="nav-item"><a href="#" class="nav-link active" data-target="intro">Introduction</a></li>
+            <li class="nav-item"><a href="#" class="nav-link" data-target="topic1">1. Defining Groups</a></li>
+            <li class="nav-item"><a href="#" class="nav-link" data-target="topic2">2. Variationist Studies</a></li>
+            <li class="nav-item"><a href="#" class="nav-link" data-target="topic3">3. Diglossia</a></li>
+            <li class="nav-item"><a href="#" class="nav-link" data-target="topic4">4. Pidgins & Creoles</a></li>
+            <li class="nav-item"><a href="#" class="nav-link" data-target="active-recall">Essay Workbook</a></li>
+            <li class="nav-item"><a href="#" class="nav-link" data-target="glossary">Glossary</a></li>
+        </ul>
+        
+        <div class="progress-bar-container">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+        <div class="progress-text" id="progressText">0% Complete</div>
+        <div style="margin-top: 2rem; text-align: center;">
+            <button class="btn" style="font-size: 0.8rem; background: #b71c1c;" onclick="resetProgress()">Reset Progress</button>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        
+        <!-- INTRODUCTION -->
+        <section id="intro" class="active">
+            <h1>Sociolinguistics Final Exam Prep</h1>
+            <div class="highlight-box" style="border-left-color: #263238; background: #eceff1;">
+                <p><strong>Goal:</strong> Prepare for four specific exam topics using <strong>ONLY</strong> the Wardhaugh & Fuller (2015) textbook.</p>
+                <p><strong>Note for Essay Questions:</strong> The content below has been expanded to include the "why" and "how"—theoretical underpinnings, conflicts in definitions, and specific case study details needed for A-level discussion answers.</p>
+            </div>
+            <h3>How to use this guide:</h3>
+            <ul>
+                <li><strong>Read Deeply:</strong> The "Deep Dive" sections contain the nuance required for essays.</li>
+                <li><strong>Synthesis:</strong> The "Essay Synthesis" blocks at the end of each topic are designed to help you structure arguments.</li>
+                <li><strong>Essay Workbook:</strong> Use the dedicated workbook section to write practice paragraphs. Your answers save automatically.</li>
+                <li><strong>Practice:</strong> Use the Self-Check Quiz at the bottom of the guide.</li>
+            </ul>
+            <div class="nav-buttons">
+                <span></span>
+                <button class="btn" onclick="switchSection('topic1')">Start Studying &rarr;</button>
+            </div>
+        </section>
+
+        <!-- TOPIC 1: GROUPS -->
+        <section id="topic1">
+            <h1>Topic 1: Defining "Groups"</h1>
+            
+            <div class="highlight-box">
+                <h3>What you must be able to do:</h3>
+                <ul>
+                    <li>Contrast "Speech Community" (abstract, norm-based) with "Community of Practice" (activity-based) and "Social Network" (relationship-based).</li>
+                    <li>Critique the circularity of defining speech communities by language alone.</li>
+                    <li>Cite specific studies: Labov (NYC), Gumperz (Kupwar), Milroys (Belfast), Eckert (Belten High), Bucholtz (Nerd Girls).</li>
+                </ul>
+            </div>
+
+            <h2>1. Speech Communities</h2>
+            <p>The concept of the "group" is fundamental to sociolinguistics, but defining it is notoriously difficult. Is it defined by the language spoken, or the people speaking it?</p>
+            
+            <details>
+                <summary>Deep Dive: The Definition Problem (Labov vs. Gumperz)</summary>
+                <div class="details-content">
+                    <p><strong>The Circularity Problem:</strong> If we define a "speech community" as "people who speak the same language," and then define a "language" as "what a speech community speaks," we have achieved nothing <span class="citation">(Wardhaugh & Fuller, 2015, p. 64)</span>. We need external criteria.</p>
+                    <p><strong>Labov's "Shared Norms" (1972):</strong> Labov argued that a speech community isn't defined by marked agreement in language use (because people speak differently due to class/region), but by <strong>participation in a set of shared norms</strong> <span class="citation">(Wardhaugh & Fuller, 2015, p. 65)</span>.</p>
+                    <ul>
+                        <li><em>Example:</em> In New York City, upper-class and lower-class speakers use different amounts of post-vocalic (r). However, they belong to the same speech community because they <strong>both evaluate</strong> (r)-pronunciation as prestigious. They share the evaluative norm, even if their performance differs.</li>
+                    </ul>
+                    <p><strong>Gumperz's "Linguistic Community" (1971):</strong> Gumperz shifted focus to interaction. He defined a community as a social group held together by the <strong>frequency of social interaction patterns</strong> and separated from surrounding areas by weaknesses in communication lines <span class="citation">(Wardhaugh & Fuller, 2015, p. 67)</span>.</p>
+                    <ul>
+                        <li><em>Key Insight:</em> A community can be multilingual. As long as they interact frequently, they form a group. </li>
+                    </ul>
+                    <p><strong>Critique:</strong> These definitions can be abstract. An individual can belong to many speech communities simultaneously (nested like Russian dolls: "Londoner," "British," "English speaker"), making the concept sometimes too broad to be useful for specific analysis <span class="citation">(Wardhaugh & Fuller, 2015, p. 67-68)</span>.</p>
+                </div>
+            </details>
+
+            <h2>2. Communities of Practice (CofP)</h2>
+            <p>This model moves away from abstract categories (like "class" or "gender") to look at what people actually <em>do</em> together.</p>
+            <details>
+                <summary>Deep Dive: Defining CofP & Key Studies</summary>
+                <div class="details-content">
+                    <p><strong>Definition (Eckert & McConnell-Ginet 1992):</strong> "An aggregate of people who come together around mutual engagement in an endeavor. Ways of doing things, ways of talking, beliefs, values, power relations—in short, practices—emerge in the course of their joint activity" <span class="citation">(Wardhaugh & Fuller, 2015, p. 68)</span>.</p>
+                    <p><strong>Why it's important:</strong> It links linguistic identity to specific activities. You aren't just "born" into a group; you construct membership by doing things.</p>
+                    <p><strong>Key Study 1: "Nerd Girls" (Bucholtz 1999):</strong></p>
+                    <ul>
+                        <li><strong>Context:</strong> US High School.</li>
+                        <li><strong>Practice:</strong> These girls rejected "cool" femininity. They engaged in shared activities (academic competition) and developed a shared repertoire.</li>
+                        <li><strong>Linguistic Features:</strong> They avoided slang and used "hypercorrect" pronunciation and formal grammar to construct a "nerd" identity that valued intelligence over coolness <span class="citation">(Wardhaugh & Fuller, 2015, p. 69)</span>.</li>
+                    </ul>
+                    <p><strong>Key Study 2: "Jocks and Burnouts" (Eckert 1989):</strong></p>
+                    <ul>
+                        <li><strong>Context:</strong> Belten High (Detroit suburbs).</li>
+                        <li><strong>The Groups:</strong> "Jocks" (school-oriented, middle-class values) vs. "Burnouts" (anti-school, urban-oriented).</li>
+                        <li><strong>Findings:</strong> The "Burnouts" led the adoption of the Northern Cities Vowel Shift (a sound change associated with urban identity). The Jocks were linguistically conservative. The linguistic differences correlated with their <em>practices</em> and orientation, not just their parents' income <span class="citation">(Wardhaugh & Fuller, 2015, p. 69)</span>.</li>
+                    </ul>
+                </div>
+            </details>
+
+            <h2>3. Social Networks</h2>
+            <p>This approach quantifies the "web" of relationships an individual has. It explains <em>how</em> norms are enforced.</p>
+            <details>
+                <summary>Deep Dive: Milroy's Belfast Study</summary>
+                <div class="details-content">
+                    <p><strong>Milroy (1980):</strong> Studied three working-class communities in Belfast (Ballymacarrett, Hammer, Clonard). She acted as a "friend of a friend" to gain access.</p>
+                    <p><strong>Network Concepts <span class="citation">(Wardhaugh & Fuller, 2015, p. 71)</span>:</strong></p>
+                    <ul>
+                        <li><strong>Density:</strong> Do the people you know also know each other? (High density = yes).</li>
+                        <li><strong>Multiplexity:</strong> Do you interact with people in multiple capacities? (e.g., your neighbor is also your coworker and your cousin).</li>
+                    </ul>
+                    <p><strong>The Core Finding:</strong> Dense, multiplex networks function as a <strong>norm enforcement mechanism</strong>. </p>
+                    <ul>
+                        <li>In Ballymacarrett (Protestant, high male employment), men had very dense/multiplex networks. They maintained the local vernacular (non-standard speech) very strongly.</li>
+                        <li>In the Clonard (Catholic, high male unemployment), men had looser networks (had to look for work outside). Their speech was less vernacular. Surprisingly, young women in the Clonard had dense networks and led the vernacular usage there.</li>
+                        <li><strong>Conclusion:</strong> It wasn't just "being working class" that caused vernacular speech; it was the <em>strength of the network ties</em> that enforced local linguistic norms against the pressure of Standard English <span class="citation">(Wardhaugh & Fuller, 2015, p. 185-186)</span>.</li>
+                    </ul>
+                </div>
+            </details>
+
+            <div class="essay-block">
+                <div class="essay-title">Essay Synthesis: Discussion Prep</div>
+                <p><strong>Prompt:</strong> "Critically evaluate the different ways sociolinguists define social groups. Which is most effective for explaining language variation?"</p>
+                <p><strong>Argument Strategy:</strong></p>
+                <ol>
+                    <li>Start with the <strong>Speech Community</strong>. Acknowledge its history (Labov) but critique its abstractness and circularity. It's good for broad patterns (e.g., everyone in NYC recognizes (r) prestige) but bad for individual variation.</li>
+                    <li>Move to <strong>Social Networks</strong> (Milroy). This offers a concrete mechanism (density/multiplexity) for <em>how</em> norms are policed. It explains why some working-class speakers use more vernacular than others (network strength).</li>
+                    <li>Conclude with <strong>Communities of Practice</strong> (Eckert/Bucholtz). This is the most dynamic. It explains <em>why</em> people adopt norms—to construct identity through shared activity (e.g., constructing "nerdiness" or "burnout" status). It accounts for agency.</li>
+                </ol>
+            </div>
+
+            <div class="nav-buttons">
+                <button class="btn" onclick="switchSection('intro')">&larr; Intro</button>
+                <button class="btn" onclick="switchSection('topic2')">Next: Variationist &rarr;</button>
+            </div>
+        </section>
+
+        <!-- TOPIC 2: VARIATION -->
+        <section id="topic2">
+            <h1>Topic 2: Variationist Sociolinguistics</h1>
+            
+            <div class="highlight-box">
+                <h3>What you must be able to do:</h3>
+                <ul>
+                    <li>Trace the historical shift through the "Three Waves" (Correlations &rarr; Ethnography &rarr; Stance).</li>
+                    <li>Explain the "Observer's Paradox" and the solution (Danger of Death).</li>
+                    <li>Analyze the relationship between gender and standardness (Trudgill vs. Milroy vs. Eckert).</li>
+                </ul>
+            </div>
+
+            <h2>The First Wave: Correlations (The Era of Labov)</h2>
+            <p><strong>Goal:</strong> To show that variation isn't random ("free variation") but structured. Focused on correlating macro-categories (Class, Age, Sex) with linguistic variables.</p>
+            
+            <details>
+                <summary>Labov: New York City (1966) - Class & Style</summary>
+                <div class="details-content">
+                    <p><strong>The "Fourth Floor" Study:</strong> Labov hypothesized that (r)-pronunciation was prestigious. He surveyed three department stores catering to different classes: Saks (High), Macy's (Mid), S. Klein (Low).</p>
+                    <ul>
+                        <li><strong>Method:</strong> Rapid and Anonymous Survey. Asked for location of items on the "fourth floor." Asked twice to elicit careful speech.</li>
+                        <li><strong>Results:</strong> (r) usage stratified by class. Saks > Macy's > Klein. Also, (r) usage increased in careful speech <span class="citation">(Wardhaugh & Fuller, 2015, p. 173)</span>.</li>
+                        <li><strong>Hypercorrection:</strong> In his broader NYC study, Labov found that the <strong>Lower Middle Class (LMC)</strong> used <em>more</em> (r) than the Upper Middle Class in the most formal reading tasks. This "crossover" pattern indicates linguistic insecurity—trying too hard to sound correct <span class="citation">(Wardhaugh & Fuller, 2015, p. 174)</span>.</li>
+                    </ul>
+                </div>
+            </details>
+
+            <details>
+                <summary>Trudgill: Norwich (1974) - Gender & Covert Prestige</summary>
+                <div class="details-content">
+                    <p>Studied the (ng) variable (walking vs. walkin').</p>
+                    <ul>
+                        <li><strong>Class Finding:</strong> Perfectly stratified. Lower classes used more non-standard variants.</li>
+                        <li><strong>Gender Finding:</strong> Women consistently used more standard forms than men of the same social class.</li>
+                        <li><strong>Explanation:</strong> Trudgill argued women are more status-conscious. Men, however, valued <strong>Covert Prestige</strong>—the non-standard form signaled masculinity and local solidarity. Men "over-reported" their non-standard usage (claimed to sound more working class than they were), while women "under-reported" (claimed to sound more standard) <span class="citation">(Wardhaugh & Fuller, 2015, p. 208-209)</span>.</li>
+                    </ul>
+                </div>
+            </details>
+
+            <h2>The Second Wave: Ethnography & Networks</h2>
+            <p><strong>Critique of First Wave:</strong> Macro-categories like "class" are too broad. We need local, ethnographic categories to understand <em>why</em> people speak the way they do.</p>
+            <ul>
+                <li><strong>Milroys (Belfast):</strong> As discussed in Topic 1, they showed that <strong>network strength</strong> explains variation better than simple class labels. A working-class person with a loose network speaks differently than one with a dense network <span class="citation">(Wardhaugh & Fuller, 2015, p. 186)</span>.</li>
+                <li><strong>Eckert (Jocks & Burnouts):</strong> Class wasn't just about parent income; it was about school orientation. "Burnouts" (anti-institution) embraced the vernacular (Northern Cities Shift) to signal local solidarity. "Jocks" (pro-institution) avoided it. Variation is a social practice, not just a reflection of status <span class="citation">(Wardhaugh & Fuller, 2015, p. 188)</span>.</li>
+            </ul>
+
+            <h2>The Third Wave: Stance & Identity Construction</h2>
+            <p><strong>Focus:</strong> Stylistic variation is not just about "attention to speech" (Labov); it is about actively constructing a persona ("Stance") moment-to-moment.</p>
+            <ul>
+                <li><strong>Theory:</strong> Linguistic features don't have static meanings (e.g., "this word means I am working class"). They have an <strong>indexical field</strong> of potential meanings (toughness, localness, masculinity). Speakers use them creatively.</li>
+                <li><strong>Example (Podesva):</strong> A medical student named Heath used falsetto voice. Not just to signal "gay identity" generally, but specifically to construct a "diva" persona in casual contexts, contrasting with a "competent professional" persona in medical contexts. Identity is fluid <span class="citation">(Wardhaugh & Fuller, 2015, p. 190)</span>.</li>
+            </ul>
+
+            <h2>Methodology: The Observer's Paradox</h2>
+            <p><strong>The Problem:</strong> "The aim of sociolinguistic research is to find out how people talk when they are not being systematically observed; but the data are available only through systematic observation" (Labov) <span class="citation">(Wardhaugh & Fuller, 2015, p. 157)</span>.</p>
+            <p><strong>Solutions:</strong></p>
+            <ul>
+                <li><strong>Danger of Death Question:</strong> Labov asked people to describe a time they almost died. The emotion overrides the careful monitoring of speech <span class="citation">(Wardhaugh & Fuller, 2015, p. 158)</span>.</li>
+                <li><strong>Rapid Anonymous Survey:</strong> (e.g., Department store study) – Quick interactions where the subject doesn't know they are being studied.</li>
+            </ul>
+
+            <div class="essay-block">
+                <div class="essay-title">Essay Synthesis: Discussion Prep</div>
+                <p><strong>Prompt:</strong> "How has the explanation for gender differences in language evolved through the three waves of variationist sociolinguistics?"</p>
+                <p><strong>Argument Strategy:</strong></p>
+                <ol>
+                    <li><strong>Wave 1 (Correlations):</strong> Trudgill (Norwich). Women use more standard forms due to status consciousness; men use non-standard forms for "covert prestige" (masculinity). Static categories.</li>
+                    <li><strong>Wave 2 (Ethnography):</strong> Milroy (Belfast). It's not just "being female"; it's about networks. Women in Clonard had dense networks and used <em>more</em> vernacular forms. Eckert: Girls rely more on symbolic capital (language/dress) than boys to define status.</li>
+                    <li><strong>Wave 3 (Identity/Stance):</strong> Podesva/Bucholtz. Gender isn't fixed. Speakers use variables to construct specific types of gendered identities (e.g., "Nerd Girl" or "Diva") in the moment.</li>
+                </ol>
+            </div>
+
+            <div class="nav-buttons">
+                <button class="btn" onclick="switchSection('topic1')">&larr; Groups</button>
+                <button class="btn" onclick="switchSection('topic3')">Next: Diglossia &rarr;</button>
+            </div>
+        </section>
+
+        <!-- TOPIC 3: DIGLOSSIA -->
+        <section id="topic3">
+            <h1>Topic 3: Diglossia</h1>
+            
+            <div class="highlight-box">
+                <h3>What you must be able to do:</h3>
+                <ul>
+                    <li>Compare Ferguson's strict definition with Fishman's extended definition.</li>
+                    <li>Provide detailed examples (Haiti, Paraguay, Switzerland, Arabic).</li>
+                    <li>Discuss the role of power and "leaking" functions.</li>
+                </ul>
+            </div>
+
+            <h2>1. Ferguson's Classic Model (1959)</h2>
+            <p>Diglossia is a specific relationship between two varieties of the <strong>same language</strong> <span class="citation">(Wardhaugh & Fuller, 2015, p. 90)</span>.</p>
+            
+            <details>
+                <summary>Deep Dive: Features of H and L</summary>
+                <div class="details-content">
+                    <ul>
+                        <li><strong>High (H):</strong> Superposed variety. Learned in school (never as a mother tongue). Used for religion, parliament, news, lectures. Highly codified (dictionaries/grammars exist). Considered "logical" and "beautiful."</li>
+                        <li><strong>Low (L):</strong> Native variety. Learned at home. Used for conversation, folk tales, captions. Often denied status (speakers say they "don't have a language").</li>
+                        <li><strong>The Four Cases <span class="citation">(Wardhaugh & Fuller, 2015, p. 91)</span>:</strong>
+                            <ol>
+                                <li><strong>Arabic:</strong> Classical (H) vs. Colloquial (L).</li>
+                                <li><strong>Swiss German:</strong> Standard German (H) vs. Swiss German (L).</li>
+                                <li><strong>Haiti:</strong> Standard French (H) vs. Haitian Creole (L).</li>
+                                <li><strong>Greece:</strong> Katharévousa (H) vs. Dhimotiki (L).</li>
+                            </ol>
+                        </li>
+                    </ul>
+                </div>
+            </details>
+
+            <h2>2. Fishman's Extension (1980)</h2>
+            <p>Fishman argued that diglossia doesn't have to be two varieties of the same language; it can be two unrelated languages <span class="citation">(Wardhaugh & Fuller, 2015, p. 94)</span>.</p>
+            <ul>
+                <li><strong>Extended Diglossia:</strong> A situation where a society is bilingual, but the languages have functionally separated domains (H/L).</li>
+                <li><strong>Paraguay (Rubin 1968):</strong> Spanish is H (urban, formal, religion). Guaraní is L (rural, intimate, jokes). 90% of the population speaks both. This is "Stable Bilingualism" because the functions are separate.</li>
+            </ul>
+
+            <h2>3. Major Criticisms & Limitations</h2>
+            <p>The concept is useful but idealizes the situation.</p>
+            <details>
+                <summary>Deep Dive: Power and Leakage</summary>
+                <div class="details-content">
+                    <p><strong>Power Dynamics (Haiti):</strong> Diglossia often reinforces inequality. In Haiti, French (H) is the language of power/law, but only 5-10% speak it fluently. The masses speak Kreyòl (L). Diglossia keeps the elite in power by blocking access <span class="citation">(Wardhaugh & Fuller, 2015, p. 94)</span>.</p>
+                    <p><strong>Leakage/Instability:</strong> Ferguson assumed diglossia was stable (could last centuries). However, domains often leak. In Paraguay, Guaraní is increasingly used in education (an H domain). The text notes the situation in Paraguay appears to become "less and less diglossic" due to these changes <span class="citation">(Wardhaugh & Fuller, 2015, p. 95)</span>.</p>
+                    <p><strong>Fuzzy Boundaries:</strong> In Arabic, speakers often mix H and L to create an "intermediate" variety (Modern Standard Arabic) for communication between dialects, which Ferguson's strict separation doesn't fully capture <span class="citation">(Wardhaugh & Fuller, 2015, p. 95)</span>.</p>
+                </div>
+            </details>
+
+            <div class="essay-block">
+                <div class="essay-title">Essay Synthesis: Discussion Prep</div>
+                <p><strong>Prompt:</strong> "Is Diglossia a stable linguistic situation or a mechanism of social control? Discuss with reference to Ferguson and specific case studies."</p>
+                <p><strong>Argument Strategy:</strong></p>
+                <ol>
+                    <li><strong>Define:</strong> Start with Ferguson (H/L separation of same language) and Fishman (Extended).</li>
+                    <li><strong>Stability argument:</strong> Use Swiss German as an example where it is stable and functional. Everyone speaks H and L; it works.</li>
+                    <li><strong>Control argument:</strong> Contrast with Haiti. Here, H (French) is not known by the masses. Diglossia functions as "Elite Closure" (Myers-Scotton), preventing social mobility.</li>
+                    <li><strong>Conclusion:</strong> Diglossia is linguistically stable only if access to H is available (Switzerland); otherwise, it is a tool of hegemony (Haiti).</li>
+                </ol>
+            </div>
+
+            <div class="nav-buttons">
+                <button class="btn" onclick="switchSection('topic2')">&larr; Variation</button>
+                <button class="btn" onclick="switchSection('topic4')">Next: Pidgins & Creoles &rarr;</button>
+            </div>
+        </section>
+
+        <!-- TOPIC 4: CONTACT LANGUAGES -->
+        <section id="topic4">
+            <h1>Topic 4: Pidgins & Creoles</h1>
+            
+            <div class="highlight-box">
+                <h3>What you must be able to do:</h3>
+                <ul>
+                    <li>Differentiate Pidgin vs. Creole using "nativization."</li>
+                    <li>Debate the "Bioprogram" vs. "Substrate" vs. "Gradualist" theories.</li>
+                    <li>Explain the "Creole Continuum" and the debate around it.</li>
+                </ul>
+            </div>
+
+            <h2>1. Core Concepts</h2>
+            <ul>
+                <li><strong>Pidgin:</strong> A simplified language used for communication between people with no common language. It has <strong>no native speakers</strong>. Structure is simplified (no inflection, reduced vocab) <span class="citation">(Wardhaugh & Fuller, 2015, p. 116)</span>.</li>
+                <li><strong>Creole:</strong> A contact language that has become the <strong>native language</strong> of a community. It has expanded vocabulary and grammar (tense, mood, aspect markers) <span class="citation">(Wardhaugh & Fuller, 2015, p. 116)</span>.</li>
+                <li><strong>Lexifier (Superstrate):</strong> The dominant language (e.g., English, French) providing the vocabulary.</li>
+                <li><strong>Substrate:</strong> The native languages of the subordinate speakers, providing grammatical influence.</li>
+            </ul>
+
+            <h2>2. The Great Debate: How do Creoles form?</h2>
+            
+            <details>
+                <summary>Theory A: The Language Bioprogram (Bickerton)</summary>
+                <div class="details-content">
+                    <p><strong>The Idea:</strong> Pidgins are too simple to be first languages. Children born on plantations hear only the pidgin. They use an innate "bioprogram" (Universal Grammar) to expand it instantly into a complex Creole.</p>
+                    <p><strong>Evidence:</strong> Bickerton claims all Creoles share similar features (e.g., tense-mood-aspect particles) because they all come from the same innate human blueprint, not the parent languages <span class="citation">(Wardhaugh & Fuller, 2015, p. 117)</span>.</p>
+                </div>
+            </details>
+
+            <details>
+                <summary>Theory B: Substratist / Relexification (Lefebvre)</summary>
+                <div class="details-content">
+                    <p><strong>The Idea:</strong> Creoles aren't created from scratch. Speakers assume the grammar of their native language (Substrate) but "plug in" the vocabulary of the dominant language (Lexifier).</p>
+                    <p><strong>Evidence:</strong> Lefebvre argues Haitian Creole looks grammatically like Fon (a West African substrate language), just with French words. This challenges the Bioprogram <span class="citation">(Wardhaugh & Fuller, 2015, p. 122)</span>.</p>
+                </div>
+            </details>
+
+            <details>
+                <summary>Theory C: Gradualism (Arends/Singler)</summary>
+                <div class="details-content">
+                    <p><strong>The Idea:</strong> Historical documents show that Creoles didn't emerge instantly in one generation (as Bickerton claimed). Elaboration happened gradually over generations of adult use, even before nativization.</p>
+                    <p><strong>Implication:</strong> You don't need children/native speakers to expand a language; adults can do it if they use the language enough <span class="citation">(Wardhaugh & Fuller, 2015, p. 118)</span>.</p>
+                </div>
+            </details>
+
+            <h2>3. The Creole Continuum</h2>
+            <p>In places like Jamaica or Guyana, the Creole and the Standard English Lexifier coexist. This creates a spectrum:</p>
+            <ul>
+                <li><strong>Basilect:</strong> The "deepest" creole, furthest from the standard.</li>
+                <li><strong>Acrolect:</strong> The variety closest to the standard language.</li>
+                <li><strong>Mesolect:</strong> Intermediate varieties.</li>
+            </ul>
+            <p><strong>Decreolization:</strong> The theory that Creoles progressively lose their distinctive features and merge with the standard due to social pressure/education. <span class="citation">(Wardhaugh & Fuller, 2015, p. 129)</span>.</p>
+
+            <div class="essay-block">
+                <div class="essay-title">Essay Synthesis: Discussion Prep</div>
+                <p><strong>Prompt:</strong> "Evaluate the role of innate grammar versus substrate influence in the formation of Creole languages."</p>
+                <p><strong>Argument Strategy:</strong></p>
+                <ol>
+                    <li><strong>Intro:</strong> Define Creole (nativized contact language). State the conflict: Where does the grammar come from?</li>
+                    <li><strong>Innate View (Bickerton):</strong> Discuss Bioprogram. Children create the grammar because the Pidgin input is insufficient. Explain similarities across global Creoles (TMA markers).</li>
+                    <li><strong>Substrate View (Lefebvre):</strong> Counter with Relexification. Haitian Creole grammar = Fon grammar. It's not innate creation; it's transfer from native languages.</li>
+                    <li><strong>Synthesis (Gradualism):</strong> Mention Arends. Historical evidence shows it takes time. It's likely a mix of universals and substrate influence, not magic instant creation.</li>
+                </ol>
+            </div>
+
+            <div class="nav-buttons">
+                <button class="btn" onclick="switchSection('topic3')">&larr; Diglossia</button>
+                <button class="btn" onclick="switchSection('active-recall')">Active Recall &rarr;</button>
+            </div>
+        </section>
+
+        <!-- ACTIVE RECALL / WORKBOOK -->
+        <section id="active-recall">
+            <h1>Active Recall Workbook</h1>
+            <div class="highlight-box" style="border-left-color: #546e7a; background: #e0f7fa;">
+                <p><strong>Instructions:</strong> Use these prompts to practice writing detailed paragraphs or short essays. Your writing is automatically saved in your browser.</p>
+                <p>Click "Show Model Answer" to compare your response with key points from the textbook.</p>
+                <div style="text-align: right; margin-top: 1rem;">
+                    <button class="btn" style="background: #b71c1c; font-size: 0.8rem;" onclick="clearRecallData()">Clear All Answers</button>
+                </div>
+            </div>
+            
+            <div id="recall-container">
+                <!-- Recall cards generated by JS -->
+            </div>
+            
+            <div class="nav-buttons">
+                <button class="btn" onclick="switchSection('topic4')">&larr; Pidgins & Creoles</button>
+                <button class="btn" onclick="switchSection('glossary')">Glossary &rarr;</button>
+            </div>
+        </section>
+
+        <!-- GLOSSARY SECTION -->
+        <section id="glossary">
+            <h1>Searchable Glossary</h1>
+            <input type="text" id="glossaryInput" class="glossary-search" placeholder="Search for a term (e.g., 'Code-switching', 'H variety')..." onkeyup="filterGlossary()">
+            
+            <div id="glossaryList">
+                <div class="glossary-item visible" data-term="speech community">
+                    <strong>Speech Community:</strong> A group of people who share a set of norms and expectations regarding the use of language. <span class="citation">(p. 65)</span>
+                </div>
+                <div class="glossary-item visible" data-term="community of practice">
+                    <strong>Community of Practice:</strong> An aggregate of people who come together around mutual engagement in an endeavor; practices emerge from this joint activity. <span class="citation">(p. 68)</span>
+                </div>
+                <div class="glossary-item visible" data-term="diglossia">
+                    <strong>Diglossia:</strong> A situation where two varieties of a language exist side by side throughout the community, with each having a definite role to play. <span class="citation">(p. 90)</span>
+                </div>
+                <div class="glossary-item visible" data-term="high variety">
+                    <strong>High (H) Variety:</strong> In diglossia, the variety used for formal occasions, written texts, and education; usually learned in school. <span class="citation">(p. 91)</span>
+                </div>
+                <div class="glossary-item visible" data-term="pidgin">
+                    <strong>Pidgin:</strong> A language with no native speakers, developed for communication between people who do not share a common language. <span class="citation">(p. 116)</span>
+                </div>
+                <div class="glossary-item visible" data-term="creole">
+                    <strong>Creole:</strong> A pidgin that has become the first language of a new generation of speakers. <span class="citation">(p. 116)</span>
+                </div>
+                <div class="glossary-item visible" data-term="observer's paradox">
+                    <strong>Observer's Paradox:</strong> The aim of sociolinguistic research is to find out how people speak when they are not being observed; but the only way to do that is to observe them. <span class="citation">(p. 157)</span>
+                </div>
+                <div class="glossary-item visible" data-term="marker">
+                    <strong>Marker:</strong> A linguistic variable that speakers are less aware of than a stereotype, but which shows consistent style-shifting. <span class="citation">(p. 151)</span>
+                </div>
+                <div class="glossary-item visible" data-term="multiplex network">
+                    <strong>Multiplex Network:</strong> A social network where individuals interact with each other in multiple capacities (e.g., work, play, family). <span class="citation">(p. 71)</span>
+                </div>
+                <div class="glossary-item visible" data-term="hypercorrection">
+                    <strong>Hypercorrection:</strong> When a social group (often LMC) overuses a prestigious form in formal situations, surpassing the usage of the group above them. <span class="citation">(p. 174)</span>
+                </div>
+                <div class="glossary-item visible" data-term="covert prestige">
+                    <strong>Covert Prestige:</strong> The status accorded to stigmatized or non-standard linguistic forms because they signal solidarity and local identity (often associated with masculinity). <span class="citation">(p. 209)</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- SELF CHECK QUIZ -->
+        <section id="quiz">
+            <h1>Self-Check Quiz</h1>
+            <div id="quiz-container">
+                <!-- Quiz questions injected via JS -->
+            </div>
+        </section>
+
+    </main>
+</div>
+
+<script>
+    // --- Navigation Logic ---
+    function switchSection(id) {
+        document.querySelectorAll('section').forEach(sec => sec.classList.remove('active'));
+        document.getElementById(id).classList.add('active');
+        
+        document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
+        document.querySelector(`.nav-link[data-target="${id}"]`).classList.add('active');
+        
+        updateProgress(id);
+        window.scrollTo(0,0);
+    }
+
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            switchSection(link.getAttribute('data-target'));
+        });
+    });
+
+    // --- Progress Tracking ---
+    function updateProgress(sectionId) {
+        let visited = JSON.parse(localStorage.getItem('studyProgress')) || [];
+        if (!visited.includes(sectionId)) {
+            visited.push(sectionId);
+            localStorage.setItem('studyProgress', JSON.stringify(visited));
+        }
+        
+        const totalSections = 6; // Intro + 4 Topics + Active Recall
+        const percentage = Math.min(100, Math.round((visited.length / totalSections) * 100));
+        
+        document.getElementById('progressBar').style.width = percentage + '%';
+        document.getElementById('progressText').innerText = percentage + '% Complete';
+    }
+
+    function resetProgress() {
+        localStorage.removeItem('studyProgress');
+        updateProgress('intro');
+        alert('Progress reset!');
+    }
+
+    // --- Active Recall Logic ---
+    const recallData = [
+        {
+            topic: "Defining Groups",
+            text: "Compare the concepts of 'Speech Community,' 'Social Network,' and 'Community of Practice.' Which of these frameworks is most effective for explaining how linguistic norms are enforced versus how individuals construct their identities? Support your argument with specific examples from sociolinguistic studies (e.g., Labov in NYC, the Milroys in Belfast, or Eckert in Detroit).",
+            answer: "<p><strong>Model Answer:</strong> Sociolinguists use different frameworks to define social groups, moving from abstract definitions to those grounded in specific activities. The <strong>Speech Community</strong>, as defined by Labov, focuses on shared norms rather than shared performance. For example, in New York City, speakers from different social classes used varying amounts of the post-vocalic (r), yet they belonged to the same speech community because they all evaluated the (r) pronunciation as prestigious. This concept is effective for explaining broad, community-wide patterns but is often criticized for being too abstract to account for individual variation.</p><p>In contrast, the <strong>Social Network</strong> framework, utilized by the Milroys in Belfast, focuses on the structure of relationships. They found that 'dense' and 'multiplex' networks (where people live, work, and socialize together) act as norm-enforcement mechanisms. This explains <em>how</em> linguistic norms are maintained: close-knit groups in Belfast pressured members to maintain the local vernacular, whereas those with looser networks (often due to unemployment) adopted more standard forms.</p><p>Finally, the <strong>Community of Practice (CofP)</strong> model, used by Eckert, focuses on shared activities and the construction of identity. In her study of 'Jocks' and 'Burnouts' in a Detroit high school, Eckert found that students didn't just speak according to their parents' social class. Instead, they adopted specific linguistic features (like the Northern Cities Vowel Shift) to signal their participation in the anti-school 'Burnout' culture. Ultimately, while Social Networks best explain the <em>enforcement</em> of norms, the Community of Practice is the most effective framework for explaining <em>identity construction</em> and individual agency.</p>",
+            id: "ar_essay_1"
+        },
+        {
+            topic: "Variationist Sociolinguistics",
+            text: "How have sociolinguists’ explanations for language variation changed over time? Discuss the shift from the 'First Wave' focus on broad social categories (such as class and gender) to the 'Third Wave' focus on stance and identity. Use specific studies (e.g., Trudgill, Eckert, or Podesva) to illustrate how the interpretation of 'style' has evolved.",
+            answer: "<p><strong>Model Answer:</strong> Variationist sociolinguistics has evolved through three distinct 'waves,' moving from determinism to agency. The <strong>First Wave</strong>, exemplified by Labov’s NYC study and Trudgill’s Norwich study, focused on correlations between linguistic variables and macro-sociological categories like class, age, and sex. For instance, Trudgill found that women in Norwich consistently used more standard forms than men of the same class. The explanation was somewhat static: women were viewed as more status-conscious, while men valued the 'covert prestige' of the vernacular to signal masculinity. Style was viewed mainly as 'attention to speech'—the more formal the situation, the more standard the speech.</p><p>The <strong>Second Wave</strong> incorporated ethnographic methods to look at local categories. Eckert’s study of 'Jocks' and 'Burnouts' showed that variation wasn't just about broad class labels, but about local social orientation. A 'Burnout' girl spoke differently than a 'Jock' girl not just because of gender, but because of her specific social alignment within the school.</p><p>The <strong>Third Wave</strong> represents a shift to 'stance' and the active construction of identity. Instead of assuming a variable always means 'working class' or 'female,' researchers look at the 'indexical field' of meanings a variable can hold. For example, Podesva’s study of a medical student named Heath showed that he used falsetto not simply because he was gay, but to construct a specific 'diva' stance in casual contexts, which contrasted with his professional persona. Thus, variation is now seen as a tool speakers use to position themselves moment-to-moment, rather than just a reflection of their demographic category.</p>",
+            id: "ar_essay_2"
+        },
+        {
+            topic: "Diglossia",
+            text: "Define 'Diglossia' according to Ferguson’s classic model and explain how Fishman extended this concept. Is diglossia a stable situation that promotes bilingualism, or is it a mechanism of social inequality? Discuss this tension using examples from Switzerland, Haiti, or Paraguay.",
+            answer: "<p><strong>Model Answer:</strong> Diglossia, first defined by Ferguson (1959), describes a situation where two varieties of the <em>same</em> language coexist with strict functional separation. The <strong>High (H)</strong> variety is superposed, learned in school, and used for formal domains (religion, government), while the <strong>Low (L)</strong> variety is the native tongue used for conversation and informal settings. Classic examples include Standard German (H) vs. Swiss German (L) in Switzerland, or Classical Arabic (H) vs. Colloquial Arabic (L). Fishman (1980) extended this concept to include situations where the H and L varieties are distinct <em>languages</em>, such as Spanish (H) and Guaraní (L) in Paraguay.</p><p>While Ferguson originally viewed diglossia as a stable situation that could last for centuries, later sociolinguists have highlighted how it often reinforces <strong>social inequality</strong> and 'elite closure.' In Switzerland, diglossia is relatively stable and functional because the entire population has access to both H and L. However, in Haiti, the situation is one of conflict. French serves as the H variety, yet only a small minority of the population speaks it fluently. The vast majority speak only Haitian Creole (L). By keeping French as the language of law, government, and power, the elite effectively exclude the masses from social mobility. Therefore, while diglossia can be a stable arrangement for multilingualism (as Fishman argued), it often functions as a tool of hegemony, limiting power to those who have access to the H variety.</p>",
+            id: "ar_essay_3"
+        },
+        {
+            topic: "Pidgins & Creoles",
+            text: "How do Creole languages form? Contrast the 'Language Bioprogram Hypothesis' (nature) with theories that emphasize the influence of 'substrate' languages (nurture) or gradual development. According to these theories, what distinct roles do children and adults play in the creation of a Creole?",
+            answer: "<p><strong>Model Answer:</strong> The formation of Creole languages is a subject of intense debate regarding the roles of innate grammar versus language contact. A Pidgin is a simplified contact language with no native speakers; a Creole arises when that language is expanded and nativized.</p><p>The <strong>Language Bioprogram Hypothesis</strong>, proposed by Derek Bickerton, argues for the 'nature' perspective. Bickerton claimed that children born on plantations were exposed to inconsistent, simplified Pidgin input from their parents. To communicate, they used an innate biological blueprint (Universal Grammar) to instantly expand the Pidgin into a complex Creole in a single generation. This theory suggests that children are the primary agents of creolization and explains why Creoles around the world share similar grammatical features (like tense-mood-aspect markers).</p><p>In contrast, the <strong>Substrate (or Relexification) Hypothesis</strong> (e.g., Lefebvre) argues that adults play the primary role. It suggests that Creole creators maintain the grammar of their native African languages (the substrate) and 'plug in' the vocabulary of the dominant European language (the lexifier). For example, Haitian Creole is argued to have the grammar of Fon (a West African language) with French words.</p><p>Finally, the <strong>Gradualist Model</strong> challenges the idea that Creoles emerge instantly. Historical evidence suggests that adults expanded these languages over several generations of use, even before they became anyone's native language. This view moves away from the 'instant creation' by children to a more complex view of social elaboration by adults over time.</p>",
+            id: "ar_essay_4"
+        }
+    ];
+
+    function renderActiveRecall() {
+        const container = document.getElementById('recall-container');
+        const savedAnswers = JSON.parse(localStorage.getItem('sociolinguistics_recall_essays')) || {};
+
+        recallData.forEach(item => {
+            const card = document.createElement('div');
+            card.className = 'recall-card';
+            
+            // Textarea for essay input
+            const inputHtml = `<textarea class="recall-textarea" id="${item.id}" placeholder="Write your answer here..." oninput="saveRecallAnswer('${item.id}', this.value)">${savedAnswers[item.id] || ''}</textarea>`;
+            
+            card.innerHTML = `
+                <div style="font-size: 0.85rem; text-transform: uppercase; color: #607d8b; font-weight: bold; margin-bottom: 0.5rem; letter-spacing: 1px;">${item.topic}</div>
+                <p class="recall-prompt">${item.text}</p>
+                ${inputHtml}
+                <span class="recall-toggle" onclick="toggleRecallAnswer('${item.id}_ans')">Show Model Answer</span>
+                <div id="${item.id}_ans" class="recall-answer">${item.answer}</div>
+            `;
+            
+            container.appendChild(card);
+        });
+    }
+
+    function saveRecallAnswer(id, value) {
+        let answers = JSON.parse(localStorage.getItem('sociolinguistics_recall_essays')) || {};
+        answers[id] = value;
+        localStorage.setItem('sociolinguistics_recall_essays', JSON.stringify(answers));
+    }
+
+    function toggleRecallAnswer(elId) {
+        const el = document.getElementById(elId);
+        if (el.style.display === 'block') {
+            el.style.display = 'none';
+        } else {
+            el.style.display = 'block';
+        }
+    }
+
+    function clearRecallData() {
+        if(confirm("Are you sure you want to clear all your workbook answers?")) {
+            localStorage.removeItem('sociolinguistics_recall_essays');
+            document.getElementById('recall-container').innerHTML = '';
+            renderActiveRecall();
+        }
+    }
+
+    // --- Glossary Search ---
+    function filterGlossary() {
+        const input = document.getElementById('glossaryInput').value.toLowerCase();
+        const items = document.getElementsByClassName('glossary-item');
+        
+        for (let i = 0; i < items.length; i++) {
+            const term = items[i].getAttribute('data-term');
+            if (term.toLowerCase().includes(input)) {
+                items[i].classList.add('visible');
+            } else {
+                items[i].classList.remove('visible');
+            }
+        }
+    }
+
+    // --- Quiz Data & Logic ---
+    const quizData = [
+        {
+            topic: "topic1",
+            question: "Why did Milroy's Belfast study find that men in the Clonard had looser social networks than men in Ballymacarrett?",
+            options: ["Religious differences", "Higher unemployment forced Clonard men to seek work outside the community", "Ballymacarrett men were older", "Clonard men preferred Standard English"],
+            correct: 1,
+            citation: "(Wardhaugh & Fuller, 2015, p. 185)",
+            explanation: "The lack of local employment meant Clonard men couldn't maintain the dense, multiplex networks found in Ballymacarrett."
+        },
+        {
+            topic: "topic1",
+            question: "According to Eckert & McConnell-Ginet, what defines a Community of Practice?",
+            options: ["Shared geography", "Mutual engagement in a common endeavor", "Speaking the same dialect", "Being from the same social class"],
+            correct: 1,
+            citation: "(Wardhaugh & Fuller, 2015, p. 68)",
+            explanation: "A CofP is defined by mutual engagement, joint enterprise, and shared repertoire, not just geography or dialect."
+        },
+        {
+            topic: "topic2",
+            question: "In Labov's NYC study, what happened to the Lower Middle Class (LMC) in the most formal reading tasks?",
+            options: ["They used the least (r)", "They behaved exactly like the Upper Middle Class", "They hypercorrected and used MORE (r) than the Upper Middle Class", "They refused to read the list"],
+            correct: 2,
+            citation: "(Wardhaugh & Fuller, 2015, p. 174)",
+            explanation: "This 'crossover' pattern is the classic definition of linguistic hypercorrection due to linguistic insecurity."
+        },
+        {
+            topic: "topic2",
+            question: "How did Trudgill explain the finding that men used more non-standard forms than women?",
+            options: ["Men are less intelligent", "Women have better hearing", "Men value 'covert prestige' (masculinity/solidarity)", "Women are naturally more polite"],
+            correct: 2,
+            citation: "(Wardhaugh & Fuller, 2015, p. 209)",
+            explanation: "Men aimed for covert prestige to signal solidarity and toughness, leading them to over-report non-standard usage."
+        },
+        {
+            topic: "topic3",
+            question: "According to Ferguson (1959), how is the H variety acquired in a diglossic situation?",
+            options: ["It is learned at home as a mother tongue", "It is taught in formal schooling", "It is learned on the playground", "It is innate"],
+            correct: 1,
+            citation: "(Wardhaugh & Fuller, 2015, p. 93)",
+            explanation: "A key feature of Diglossia is that no one speaks the H variety as a mother tongue; it must be formally taught."
+        },
+        {
+            topic: "topic3",
+            question: "Why is the situation in Paraguay considered 'Extended Diglossia' by Fishman?",
+            options: ["Because they use three languages", "Because the H (Spanish) and L (Guaraní) are unrelated languages, not dialects", "Because everyone is monolingual", "Because it is unstable"],
+            correct: 1,
+            citation: "(Wardhaugh & Fuller, 2015, p. 95)",
+            explanation: "Fishman extended the definition to include bilingual societies where distinct languages perform the H and L functions."
+        },
+        {
+            topic: "topic4",
+            question: "Which theory claims that children use an innate grammar to transform a pidgin into a creole?",
+            options: ["Relexification Hypothesis", "Gradualist Model", "Language Bioprogram Hypothesis", "Afrogenesis"],
+            correct: 2,
+            citation: "(Wardhaugh & Fuller, 2015, p. 117)",
+            explanation: "Derek Bickerton's Bioprogram Hypothesis relies on the idea of an innate biological grammar mechanism."
+        },
+        {
+            topic: "topic4",
+            question: "What is the 'Relexification Hypothesis'?",
+            options: ["Creoles are formed gradually by adults", "Creoles use the grammar of the Substrate and vocabulary of the Superstrate", "Creoles are simplified versions of the Superstrate", "Creoles come from Portuguese"],
+            correct: 1,
+            citation: "(Wardhaugh & Fuller, 2015, p. 122)",
+            explanation: "Lefebvre argues that speakers substitute the vocabulary of the dominant language into the grammatical frame of their native language."
+        }
+    ];
+
+    function renderQuiz() {
+        const container = document.getElementById('quiz-container');
+        quizData.forEach((q, index) => {
+            const qDiv = document.createElement('div');
+            qDiv.className = 'quiz-question';
+            
+            let html = `<h3>Question ${index + 1}</h3><p>${q.question}</p><ul class="quiz-options">`;
+            q.options.forEach((opt, i) => {
+                html += `<li class="quiz-option" onclick="checkAnswer(this, ${index}, ${i})">${opt}</li>`;
+            });
+            html += `</ul><div class="feedback" id="feedback-${index}"></div>`;
+            
+            qDiv.innerHTML = html;
+            container.appendChild(qDiv);
+        });
+    }
+
+    function checkAnswer(el, qIndex, optIndex) {
+        const q = quizData[qIndex];
+        const feedback = document.getElementById(`feedback-${qIndex}`);
+        
+        // Disable clicks
+        const opts = el.parentElement.children;
+        for(let o of opts) o.style.pointerEvents = 'none';
+
+        if (optIndex === q.correct) {
+            el.classList.add('correct');
+            feedback.innerHTML = `<strong>Correct!</strong> ${q.explanation} <span class="citation">${q.citation}</span>`;
+            feedback.style.color = 'green';
+        } else {
+            el.classList.add('incorrect');
+            opts[q.correct].classList.add('correct'); // Show right answer
+            feedback.innerHTML = `<strong>Incorrect.</strong> ${q.explanation} <span class="citation">${q.citation}</span>`;
+            feedback.style.color = '#b71c1c';
+        }
+        feedback.style.display = 'block';
+    }
+
+    // Initialize
+    renderQuiz();
+    renderActiveRecall();
+    updateProgress('intro'); // Init load
+
+</script>
+
+</body>
+</html>
